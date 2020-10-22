@@ -1,5 +1,6 @@
-package com.dss.msscbrewery.services;
+package com.dss.msscbrewery.services.impl;
 
+import com.dss.msscbrewery.services.BeerService;
 import com.dss.msscbrewery.web.domain.BeerDTO;
 import org.springframework.stereotype.Service;
 
@@ -14,5 +15,15 @@ public class BeerServiceImpl implements BeerService {
                 .beerName("SuperRed")
                 .beerStyle("Red")
                 .build();
+    }
+
+    @Override
+    public BeerDTO saveBeer(BeerDTO beerDTO) {
+        return BeerDTO.builder().id(UUID.randomUUID()).build();
+    }
+
+    @Override
+    public void updateBeer(UUID beerId, BeerDTO beerDTO) {
+        // todo
     }
 }
