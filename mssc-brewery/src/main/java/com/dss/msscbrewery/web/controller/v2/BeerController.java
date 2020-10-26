@@ -1,7 +1,7 @@
-package com.dss.msscbrewery.web.controller;
+package com.dss.msscbrewery.web.controller.v2;
 
-import com.dss.msscbrewery.services.BeerService;
-import com.dss.msscbrewery.web.domain.BeerDTO;
+import com.dss.msscbrewery.services.v2.BeerService;
+import com.dss.msscbrewery.web.domain.v2.BeerDTO;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
-@RequestMapping("/api/v1/beer")
+@RequestMapping("/api/v2/beer")
 @RestController
 public class BeerController {
 

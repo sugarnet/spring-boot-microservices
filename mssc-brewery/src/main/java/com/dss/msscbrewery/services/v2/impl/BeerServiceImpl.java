@@ -1,7 +1,8 @@
-package com.dss.msscbrewery.services.impl;
+package com.dss.msscbrewery.services.v2.impl;
 
-import com.dss.msscbrewery.services.BeerService;
-import com.dss.msscbrewery.web.domain.BeerDTO;
+import com.dss.msscbrewery.services.v2.BeerService;
+import com.dss.msscbrewery.web.domain.v2.BeerDTO;
+import com.dss.msscbrewery.web.domain.v2.BeerStyle;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +16,7 @@ public class BeerServiceImpl implements BeerService {
         return BeerDTO.builder()
                 .id(beerId)
                 .beerName("SuperRed")
-                .beerStyle("Red")
+                .beerStyle(BeerStyle.IPA)
                 .build();
     }
 

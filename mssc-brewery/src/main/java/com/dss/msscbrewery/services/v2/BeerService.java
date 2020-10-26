@@ -1,6 +1,6 @@
-package com.dss.msscbrewery.services;
+package com.dss.msscbrewery.services.v2;
 
-import com.dss.msscbrewery.web.domain.BeerDTO;
+import com.dss.msscbrewery.web.domain.v2.BeerDTO;
 
 import java.util.UUID;
 
