@@ -4,7 +4,7 @@ import com.dss.msscbrewery.web.domain.v2.BeerDTO;
 
 import java.util.UUID;
 
-public interface BeerService {
+public interface BeerServiceV2 {
 
     BeerDTO getBeerById(UUID beerId);
 

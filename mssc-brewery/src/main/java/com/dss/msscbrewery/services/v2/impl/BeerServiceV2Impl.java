@@ -1,6 +1,6 @@
 package com.dss.msscbrewery.services.v2.impl;
 
-import com.dss.msscbrewery.services.v2.BeerService;
+import com.dss.msscbrewery.services.v2.BeerServiceV2;
 import com.dss.msscbrewery.web.domain.v2.BeerDTO;
 import com.dss.msscbrewery.web.domain.v2.BeerStyle;
 import lombok.extern.slf4j.Slf4j;
@@ -10,7 +10,7 @@ import java.util.UUID;
 
 @Slf4j
 @Service
-public class BeerServiceImpl implements BeerService {
+public class BeerServiceV2Impl implements BeerServiceV2 {
     @Override
     public BeerDTO getBeerById(UUID beerId) {
         return BeerDTO.builder()
