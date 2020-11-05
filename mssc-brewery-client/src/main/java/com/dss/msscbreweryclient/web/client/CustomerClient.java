@@ -1,6 +1,6 @@
 package com.dss.msscbreweryclient.web.client;
 
-import com.dss.msscbreweryclient.web.model.BeerDTO;
+import com.dss.msscbreweryclient.web.model.CustomerDTO;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.stereotype.Component;
@@ -11,30 +11,30 @@ import java.util.UUID;
 
 @Component
 @ConfigurationProperties(value = "sfg.brewery", ignoreUnknownFields = false)
-public class BreweryClient {
+public class CustomerClient {
 
-    private static final String API_PATH_V1 = "/api/v1/beer/";
+    private static final String API_PATH_V1 = "/api/v1/customer/";
     private String apiHost;
 
     private final RestTemplate restTemplate;
 
-    public BreweryClient(RestTemplateBuilder restTemplateBuilder) {
+    public CustomerClient(RestTemplateBuilder restTemplateBuilder) {
         this.restTemplate = restTemplateBuilder.build();
     }
 
-    public BeerDTO getBeerById(UUID id) {
-        return restTemplate.getForObject(apiHost + API_PATH_V1 + id.toString(), BeerDTO.class);
+    public CustomerDTO getCustomerById(UUID id) {
+        return restTemplate.getForObject(apiHost + API_PATH_V1 + id.toString(), CustomerDTO.class);
     }
 
-    public URI saveNewBeer(BeerDTO beerDTO) {
-        return restTemplate.postForLocation(apiHost + API_PATH_V1, beerDTO);
+    public URI saveNewCustomer(CustomerDTO customerDTO) {
+        return restTemplate.postForLocation(apiHost + API_PATH_V1, customerDTO);
     }
 
-    public void updateBeer(UUID uuid, BeerDTO beerDTO) {
-        restTemplate.put(apiHost + API_PATH_V1 + uuid.toString(), beerDTO);
+    public void updateCustomer(UUID uuid, CustomerDTO customerDTO) {
+        restTemplate.put(apiHost + API_PATH_V1 + uuid.toString(), customerDTO);
     }
 
-    public void deleteBeer(UUID uuid) {
+    public void deleteCustomer(UUID uuid) {
         restTemplate.delete(apiHost + API_PATH_V1 + uuid);
     }
 
