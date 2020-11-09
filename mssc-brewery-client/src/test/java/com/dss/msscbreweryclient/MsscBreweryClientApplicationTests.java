@@ -1,10 +1,10 @@
-package com.dss.msscbrewery;
+package com.dss.msscbreweryclient;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MsscBreweryApplicationTests {
+class MsscBreweryClientApplicationTests {
 
 	@Test
 	void contextLoads() {
