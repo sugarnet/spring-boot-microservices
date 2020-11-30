@@ -1,8 +1,8 @@
 package com.dss.msscbrewery.services.v2.impl;
 
 import com.dss.msscbrewery.services.v2.BeerServiceV2;
-import com.dss.msscbrewery.web.domain.v2.BeerDTO;
-import com.dss.msscbrewery.web.domain.v2.BeerStyle;
+import com.dss.msscbrewery.web.model.v2.BeerDTO;
+import com.dss.msscbrewery.web.model.v2.BeerStyle;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

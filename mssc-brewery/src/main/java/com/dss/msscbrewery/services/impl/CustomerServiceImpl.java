@@ -1,7 +1,7 @@
 package com.dss.msscbrewery.services.impl;
 
 import com.dss.msscbrewery.services.CustomerService;
-import com.dss.msscbrewery.web.domain.CustomerDTO;
+import com.dss.msscbrewery.web.model.CustomerDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

@@ -1,6 +1,6 @@
 package com.dss.msscbrewery.services;
 
-import com.dss.msscbrewery.web.domain.CustomerDTO;
+import com.dss.msscbrewery.web.model.CustomerDTO;
 
 import java.util.UUID;
 

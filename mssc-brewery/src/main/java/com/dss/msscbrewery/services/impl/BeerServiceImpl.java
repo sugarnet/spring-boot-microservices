@@ -1,7 +1,7 @@
 package com.dss.msscbrewery.services.impl;
 
 import com.dss.msscbrewery.services.BeerService;
-import com.dss.msscbrewery.web.domain.BeerDTO;
+import com.dss.msscbrewery.web.model.BeerDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

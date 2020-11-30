@@ -1,16 +1,13 @@
 package com.dss.msscbrewery.web.controller.v2;
 
 import com.dss.msscbrewery.services.v2.BeerServiceV2;
-import com.dss.msscbrewery.web.domain.v2.BeerDTO;
+import com.dss.msscbrewery.web.model.v2.BeerDTO;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 @RequestMapping("/api/v2/beer")

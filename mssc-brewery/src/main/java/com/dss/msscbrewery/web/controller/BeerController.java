@@ -1,7 +1,7 @@
 package com.dss.msscbrewery.web.controller;
 
 import com.dss.msscbrewery.services.BeerService;
-import com.dss.msscbrewery.web.domain.BeerDTO;
+import com.dss.msscbrewery.web.model.BeerDTO;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

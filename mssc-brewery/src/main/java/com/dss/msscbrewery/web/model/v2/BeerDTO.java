@@ -1,13 +1,11 @@
-package com.dss.msscbrewery.web.domain;
+package com.dss.msscbrewery.web.model.v2;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Null;
-import javax.validation.constraints.Positive;
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
 @Data
@@ -15,17 +13,11 @@ import java.util.UUID;
 @AllArgsConstructor
 @Builder
 public class BeerDTO {
-
-    @Null
     private UUID id;
-
-    @NotBlank
     private String beerName;
-
-    @NotBlank
-    private String beerStyle;
-
-    @Positive
+    private BeerStyle beerStyle;
     private Long upc;
 
+    private OffsetDateTime createdDate;
+    private OffsetDateTime lastUpdatedDate;
 }
