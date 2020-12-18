@@ -30,7 +30,7 @@ public class BlockingRestTemplateCustomizer implements RestTemplateCustomizer {
         this.socketTimeout = socketTimeout;
     }
 
-    public ClientHttpRequestFactory clientHttpRequestFactory(){
+    public ClientHttpRequestFactory clientHttpRequestFactory() {
         PoolingHttpClientConnectionManager connectionManager = new PoolingHttpClientConnectionManager();
         connectionManager.setMaxTotal(maxTotalConnections);
         connectionManager.setDefaultMaxPerRoute(maxPerRouteConnections);
@@ -50,6 +50,7 @@ public class BlockingRestTemplateCustomizer implements RestTemplateCustomizer {
 
         return new HttpComponentsClientHttpRequestFactory(httpClient);
     }
+
     @Override
     public void customize(RestTemplate restTemplate) {
         restTemplate.setRequestFactory(this.clientHttpRequestFactory());

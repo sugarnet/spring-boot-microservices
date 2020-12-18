@@ -105,12 +105,12 @@ class BeerControllerTest {
                 .andExpect(status().isCreated())
                 .andDo(
                         document("v1/beer",
-                           requestFields(
-                                   fields.withPath("id").ignored(),
-                                   fields.withPath("beerName").description("Name of beer"),
-                                   fields.withPath("beerStyle").description("Kind of beer"),
-                                   fields.withPath("upc").description("UPC of beer")
-                        )));
+                                requestFields(
+                                        fields.withPath("id").ignored(),
+                                        fields.withPath("beerName").description("Name of beer"),
+                                        fields.withPath("beerStyle").description("Kind of beer"),
+                                        fields.withPath("upc").description("UPC of beer")
+                                )));
 
     }
 
