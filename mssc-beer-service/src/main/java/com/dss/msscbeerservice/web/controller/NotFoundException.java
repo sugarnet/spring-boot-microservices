@@ -1,4 +1,4 @@
-package com.dss.msscbeerservice.web.service;
+package com.dss.msscbeerservice.web.controller;
 
 public class NotFoundException extends RuntimeException {
 
