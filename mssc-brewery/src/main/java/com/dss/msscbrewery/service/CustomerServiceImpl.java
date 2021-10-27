@@ -16,16 +16,19 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public CustomerDTO saveNewCustomer(CustomerDTO customerDTO) {
+        log.info("DTO {}", customerDTO);
         return CustomerDTO.builder().id(UUID.randomUUID()).build();
     }
 
     @Override
     public void updateCustomer(CustomerDTO customerDTO, UUID customerId) {
         log.info("Updating a Customer");
+        log.info("DTO {}", customerDTO);
+        log.info("UUID {}", customerId);
     }
 
     @Override
     public void delete(UUID customerId) {
-        log.info("Deleting a Customer");
+        log.info("Deleting a Customer {}", customerId);
     }
 }
