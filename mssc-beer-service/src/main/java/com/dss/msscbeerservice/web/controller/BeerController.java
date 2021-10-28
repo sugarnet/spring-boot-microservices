@@ -1,6 +1,6 @@
 package com.dss.msscbeerservice.web.controller;
 
-import com.dss.msscbeerservice.web.domain.BeerDto;
+import com.dss.msscbeerservice.web.model.BeerDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

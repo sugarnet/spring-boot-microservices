@@ -1,4 +1,4 @@
-package com.dss.msscbeerservice.web.domain;
+package com.dss.msscbeerservice.web.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
