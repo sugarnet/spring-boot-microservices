@@ -1,6 +1,5 @@
 package com.dss.msscbrewery.web.controller.v2;
 
-import com.dss.msscbrewery.service.BeerService;
 import com.dss.msscbrewery.service.v2.BeerServiceV2;
 import com.dss.msscbrewery.web.model.v2.BeerDTOV2;
 import org.springframework.http.HttpHeaders;
@@ -8,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.UUID;
 
 @RequestMapping("/api/v2/beer/")
@@ -26,7 +26,7 @@ public class BeerControllerV2 {
     }
 
     @PostMapping
-    public ResponseEntity handlePost(@RequestBody BeerDTOV2 beerDTO) {
+    public ResponseEntity handlePost(@Valid @RequestBody BeerDTOV2 beerDTO) {
         BeerDTOV2 savedDTO = beerService.saveNewBeer(beerDTO);
 
         HttpHeaders headers = new HttpHeaders();
@@ -36,7 +36,7 @@ public class BeerControllerV2 {
     }
 
     @PutMapping("{beerId}")
-    public ResponseEntity handleUpdate(@PathVariable UUID beerId, @RequestBody BeerDTOV2 beerDTO) {
+    public ResponseEntity handleUpdate(@PathVariable UUID beerId, @Valid @RequestBody BeerDTOV2 beerDTO) {
         beerService.updateBeer(beerId, beerDTO);
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }

@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.UUID;
 
 @RequestMapping("/api/v1/customer")
@@ -25,7 +26,7 @@ public class CustomerController {
     }
 
     @PostMapping
-    public ResponseEntity handlePost(@RequestBody CustomerDTO customerDTO) {
+    public ResponseEntity handlePost(@Valid @RequestBody CustomerDTO customerDTO) {
         CustomerDTO savedDTO = customerService.saveNewCustomer(customerDTO);
 
         HttpHeaders headers = new HttpHeaders();
@@ -35,7 +36,7 @@ public class CustomerController {
     }
 
     @PutMapping("/{customerId}")
-    public ResponseEntity update(@RequestBody CustomerDTO customerDTO, @PathVariable UUID customerId) {
+    public ResponseEntity update(@Valid @RequestBody CustomerDTO customerDTO, @PathVariable UUID customerId) {
         customerService.updateCustomer(customerDTO, customerId);
 
         return new ResponseEntity(HttpStatus.NO_CONTENT);
