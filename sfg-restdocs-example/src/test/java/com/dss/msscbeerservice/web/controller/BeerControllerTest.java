@@ -34,7 +34,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.mockito.BDDMockito.given;
 
 @ExtendWith(RestDocumentationExtension.class)
-@AutoConfigureRestDocs
+@AutoConfigureRestDocs(uriScheme = "https", uriHost = "ar.com.dss", uriPort = 80)
 @WebMvcTest(BeerController.class)
 class BeerControllerTest {
 
@@ -55,7 +55,7 @@ class BeerControllerTest {
                         .param("paramName", "paramValue")
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andDo(document("v1/beer",
+                .andDo(document("v1/beer-get",
                         pathParameters(
                             parameterWithName("beerId").description("UUID of desired beer to get.")
                         ),
@@ -63,7 +63,7 @@ class BeerControllerTest {
                                 parameterWithName("paramName").description("A simple parameter")
                         ),
                         responseFields(
-                                fieldWithPath("id").description("Id of Beer"),
+                                fieldWithPath("id").description("Id of Beer").type("UUID"),
                                 fieldWithPath("version").description("Version number"),
                                 fieldWithPath("created").description("Date Created"),
                                 fieldWithPath("updated").description("Date Updated"),
@@ -87,7 +87,7 @@ class BeerControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(beerDtoJson))
                 .andExpect(status().isCreated())
-                .andDo(document("v1/beer",
+                .andDo(document("v1/beer-new",
                         requestFields(
                                 fields.withPath("id").ignored(),
                                 fields.withPath("version").ignored(),
