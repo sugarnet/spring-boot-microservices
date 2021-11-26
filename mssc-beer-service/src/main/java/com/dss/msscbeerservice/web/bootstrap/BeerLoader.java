@@ -12,6 +12,10 @@ import java.util.List;
 @Component
 public class BeerLoader implements CommandLineRunner {
 
+    public static final String BEER_1_UPC = "1234567800001";
+    public static final String BEER_2_UPC = "1234567800002";
+    public static final String BEER_3_UPC = "1234567800003";
+
     private final BeerRepository beerRepository;
 
     public BeerLoader(BeerRepository beerRepository) {
@@ -19,7 +23,7 @@ public class BeerLoader implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
         loadBeers();
     }
 
@@ -31,7 +35,7 @@ public class BeerLoader implements CommandLineRunner {
                             .beerStyle("PORTER")
                             .quantityToBrew(200)
                             .minOnHand(12)
-                            .upc(10000001l)
+                            .upc(BEER_1_UPC)
                             .price(new BigDecimal("150.00"))
                             .build(),
                     Beer.builder()
@@ -39,8 +43,16 @@ public class BeerLoader implements CommandLineRunner {
                             .beerStyle("LAGER")
                             .quantityToBrew(200)
                             .minOnHand(12)
-                            .upc(10000002l)
+                            .upc(BEER_2_UPC)
                             .price(new BigDecimal("160.00"))
+                            .build(),
+                    Beer.builder()
+                            .beerName("Palermo")
+                            .beerStyle("LAGER")
+                            .quantityToBrew(200)
+                            .minOnHand(12)
+                            .upc(BEER_3_UPC)
+                            .price(new BigDecimal("10.00"))
                             .build());
 
             beerRepository.saveAll(beers);
