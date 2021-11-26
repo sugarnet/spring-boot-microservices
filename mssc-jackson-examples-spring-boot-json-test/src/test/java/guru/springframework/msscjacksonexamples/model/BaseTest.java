@@ -1,6 +1,10 @@
 package guru.springframework.msscjacksonexamples.model;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.UUID;
 
@@ -8,6 +12,9 @@ import java.util.UUID;
  * Created by jt on 2019-06-02.
  */
 public class BaseTest {
+    @Autowired
+    protected ObjectMapper objectMapper;
+
     BeerDto getDto(){
         return  BeerDto.builder()
                 .beerName("BeerName")
@@ -17,6 +24,7 @@ public class BaseTest {
                 .lastUpdatedDate(OffsetDateTime.now())
                 .price(new BigDecimal("12.99"))
                 .upc(123123123123L)
+                .myLocalDate(LocalDate.now())
                 .build();
     }
 }
