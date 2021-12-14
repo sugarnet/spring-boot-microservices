@@ -3,7 +3,7 @@ package com.dss.msscbeerservice.web.controller;
 import com.dss.msscbeerservice.web.model.BeerDto;
 import com.dss.msscbeerservice.web.model.BeerPagedList;
 import com.dss.msscbeerservice.web.model.BeerStyleEnum;
-import com.dss.msscbeerservice.web.service.BeerService;
+import com.dss.msscbeerservice.service.BeerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;

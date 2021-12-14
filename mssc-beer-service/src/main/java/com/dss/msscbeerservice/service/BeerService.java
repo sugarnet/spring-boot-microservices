@@ -1,4 +1,4 @@
-package com.dss.msscbeerservice.web.service;
+package com.dss.msscbeerservice.service;
 
 import com.dss.msscbeerservice.web.model.BeerDto;
 import com.dss.msscbeerservice.web.model.BeerPagedList;

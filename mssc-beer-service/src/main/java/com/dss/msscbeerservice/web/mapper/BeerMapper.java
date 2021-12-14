@@ -1,6 +1,6 @@
 package com.dss.msscbeerservice.web.mapper;
 
-import com.dss.msscbeerservice.web.domain.Beer;
+import com.dss.msscbeerservice.domain.Beer;
 import com.dss.msscbeerservice.web.model.BeerDto;
 import org.mapstruct.DecoratedWith;
 import org.mapstruct.Mapper;

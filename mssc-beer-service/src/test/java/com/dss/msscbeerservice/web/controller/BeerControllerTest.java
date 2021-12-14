@@ -1,9 +1,9 @@
 package com.dss.msscbeerservice.web.controller;
 
-import com.dss.msscbeerservice.web.bootstrap.BeerLoader;
+import com.dss.msscbeerservice.bootstrap.BeerLoader;
 import com.dss.msscbeerservice.web.model.BeerDto;
 import com.dss.msscbeerservice.web.model.BeerStyleEnum;
-import com.dss.msscbeerservice.web.service.BeerService;
+import com.dss.msscbeerservice.service.BeerService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

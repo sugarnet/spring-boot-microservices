@@ -1,16 +1,16 @@
-package com.dss.msscbeerservice.web.service;
+package com.dss.msscbeerservice.service;
 
-import com.dss.msscbeerservice.web.domain.Beer;
+import com.dss.msscbeerservice.domain.Beer;
 import com.dss.msscbeerservice.web.mapper.BeerMapper;
 import com.dss.msscbeerservice.web.model.BeerDto;
 import com.dss.msscbeerservice.web.model.BeerPagedList;
 import com.dss.msscbeerservice.web.model.BeerStyleEnum;
-import com.dss.msscbeerservice.web.repository.BeerRepository;
+import com.dss.msscbeerservice.repository.BeerRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 import java.util.Objects;
 import java.util.UUID;
@@ -23,8 +23,12 @@ public class BeerServiceImpl implements BeerService {
     private final BeerMapper beerMapper;
     private final BeerRepository beerRepository;
 
+    @Cacheable(cacheNames = "beerListCache", condition = "#showInventoryOnHand == false")
     @Override
     public BeerPagedList listBeers(String beerName, BeerStyleEnum beerStyle, PageRequest pageRequest, Boolean showInventoryOnHand) {
+
+        System.out.println("Was called!!");
+
         BeerPagedList beerPagedList;
         Page<Beer> beerPage;
 
@@ -69,8 +73,11 @@ public class BeerServiceImpl implements BeerService {
         return beerPagedList;
     }
 
+    @Cacheable(cacheNames = "beerCache", key = "#beerId",condition = "#showInventoryOnHand == false")
     @Override
     public BeerDto getById(UUID beerId, Boolean showInventoryOnHand) {
+
+        System.out.println("Was called!!");
 
         if (showInventoryOnHand) {
             return beerMapper.beerToBeerDtoWithInventory(beerRepository.findById(beerId).orElseThrow(IllegalArgumentException::new));

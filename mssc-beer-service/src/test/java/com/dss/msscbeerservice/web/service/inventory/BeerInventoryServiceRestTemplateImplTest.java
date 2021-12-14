@@ -1,6 +1,6 @@
 package com.dss.msscbeerservice.web.service.inventory;
 
-import com.dss.msscbeerservice.web.bootstrap.BeerLoader;
+import com.dss.msscbeerservice.service.inventory.BeerInventoryService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.UUID;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @Disabled // utility for manual testing
 @SpringBootTest

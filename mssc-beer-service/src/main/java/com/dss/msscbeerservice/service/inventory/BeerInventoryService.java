@@ -1,4 +1,4 @@
-package com.dss.msscbeerservice.web.service.inventory;
+package com.dss.msscbeerservice.service.inventory;
 
 import java.util.UUID;
 

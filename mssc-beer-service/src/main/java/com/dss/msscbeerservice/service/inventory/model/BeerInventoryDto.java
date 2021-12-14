@@ -1,4 +1,4 @@
-package com.dss.msscbeerservice.web.service.inventory.model;
+package com.dss.msscbeerservice.service.inventory.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

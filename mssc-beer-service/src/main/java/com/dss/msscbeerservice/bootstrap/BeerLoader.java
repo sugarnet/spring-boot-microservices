@@ -1,7 +1,7 @@
-package com.dss.msscbeerservice.web.bootstrap;
+package com.dss.msscbeerservice.bootstrap;
 
-import com.dss.msscbeerservice.web.domain.Beer;
-import com.dss.msscbeerservice.web.repository.BeerRepository;
+import com.dss.msscbeerservice.domain.Beer;
+import com.dss.msscbeerservice.repository.BeerRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
