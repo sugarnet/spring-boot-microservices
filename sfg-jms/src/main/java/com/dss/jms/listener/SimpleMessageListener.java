@@ -10,6 +10,7 @@ import org.springframework.messaging.handler.annotation.Headers;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 
+import javax.jms.Destination;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import java.util.UUID;
@@ -29,11 +30,14 @@ public class SimpleMessageListener {
     }
 
     @JmsListener(destination = JmsConfig.MY_SEND_RCV_QUEUE)
-    public void listenFromHellos(@Payload SimpleMessage simpleMessage, @Headers MessageHeaders headers, Message message) throws JMSException {
+    public void listenFromHellos(@Payload SimpleMessage simpleMessage, @Headers MessageHeaders headers, Message message, org.springframework.messaging.Message springMessage) throws JMSException {
 
         SimpleMessage payloadMessage = SimpleMessage.builder().id(UUID.randomUUID()).message("World!!").build();
 
-        jmsTemplate.convertAndSend(message.getJMSReplyTo(), payloadMessage);
+        // Spring use
+        //jmsTemplate.convertAndSend((Destination) springMessage.getHeaders().get("jms_replyTo"), "got it!");
+
+        jmsTemplate.convertAndSend(message.getJMSReplyTo(), payloadMessage);jmsTemplate.convertAndSend(message.getJMSReplyTo(), payloadMessage);
 
     }
 
