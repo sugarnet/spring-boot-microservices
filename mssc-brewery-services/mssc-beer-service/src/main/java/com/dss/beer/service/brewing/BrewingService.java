@@ -1,4 +1,4 @@
-package com.dss.beer.service;
+package com.dss.beer.service.brewing;
 
 import com.dss.beer.config.JmsConfig;
 import com.dss.beer.domain.Beer;
