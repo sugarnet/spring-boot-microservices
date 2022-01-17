@@ -1,10 +1,9 @@
-package com.dss.inventory.service;
+package com.dss.inventory;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jms.artemis.ArtemisAutoConfiguration;
 
-@SpringBootApplication(exclude = ArtemisAutoConfiguration.class)
+@SpringBootApplication
 public class BeerInventoryApplication {
 
     public static void main(String[] args) {

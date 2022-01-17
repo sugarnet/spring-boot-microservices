@@ -1,4 +1,4 @@
-package com.dss.inventory.service.web.model;
+package com.dss.inventory.web.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

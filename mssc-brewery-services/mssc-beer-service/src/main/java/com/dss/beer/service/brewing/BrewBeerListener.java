@@ -3,7 +3,7 @@ package com.dss.beer.service.brewing;
 import com.dss.beer.config.JmsConfig;
 import com.dss.beer.domain.Beer;
 import com.dss.beer.events.BrewBeerEvent;
-import com.dss.beer.events.NewInventoryEvent;
+import com.dss.common.events.NewInventoryEvent;
 import com.dss.beer.repository.BeerRepository;
 import com.dss.beer.web.model.BeerDto;
 import lombok.RequiredArgsConstructor;

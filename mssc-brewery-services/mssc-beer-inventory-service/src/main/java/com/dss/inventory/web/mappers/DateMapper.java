@@ -15,7 +15,7 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.dss.inventory.service.web.mappers;
+package com.dss.inventory.web.mappers;
 
 import org.springframework.stereotype.Component;
 

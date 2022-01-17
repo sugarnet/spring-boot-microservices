@@ -1,4 +1,4 @@
-package com.dss.beer.events;
+package com.dss.common.events;
 
 import com.dss.beer.web.model.BeerDto;
 import lombok.*;

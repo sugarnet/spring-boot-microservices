@@ -1,8 +1,8 @@
-package com.dss.inventory.service.web.controllers;
+package com.dss.inventory.web.controllers;
 
-import com.dss.inventory.service.repositories.BeerInventoryRepository;
-import com.dss.inventory.service.web.mappers.BeerInventoryMapper;
-import com.dss.inventory.service.web.model.BeerInventoryDto;
+import com.dss.inventory.repositories.BeerInventoryRepository;
+import com.dss.inventory.web.mappers.BeerInventoryMapper;
+import com.dss.inventory.web.model.BeerInventoryDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
