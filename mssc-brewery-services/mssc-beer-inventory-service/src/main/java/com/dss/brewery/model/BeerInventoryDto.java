@@ -1,4 +1,4 @@
-package com.dss.inventory.web.model;
+package com.dss.brewery.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

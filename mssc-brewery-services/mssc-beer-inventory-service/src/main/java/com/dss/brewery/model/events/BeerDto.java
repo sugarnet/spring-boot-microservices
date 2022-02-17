@@ -1,4 +1,4 @@
-package com.dss.common.events;
+package com.dss.brewery.model.events;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;

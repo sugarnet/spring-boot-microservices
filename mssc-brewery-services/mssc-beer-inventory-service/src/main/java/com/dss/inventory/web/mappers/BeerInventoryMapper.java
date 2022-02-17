@@ -1,7 +1,7 @@
 package com.dss.inventory.web.mappers;
 
 import com.dss.inventory.domain.BeerInventory;
-import com.dss.inventory.web.model.BeerInventoryDto;
+import com.dss.brewery.model.BeerInventoryDto;
 import org.mapstruct.Mapper;
 
 /**

@@ -2,9 +2,9 @@ package com.dss.inventory.service.brewing;
 
 import com.dss.inventory.config.JmsConfig;
 import com.dss.inventory.domain.BeerInventory;
-import com.dss.common.events.NewInventoryEvent;
+import com.dss.brewery.model.events.NewInventoryEvent;
 import com.dss.inventory.repositories.BeerInventoryRepository;
-import com.dss.common.events.BeerDto;
+import com.dss.brewery.model.events.BeerDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.jms.annotation.JmsListener;
