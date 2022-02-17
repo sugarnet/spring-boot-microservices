@@ -1,8 +1,8 @@
 package com.dss.beer.web.controller;
 
-import com.dss.beer.web.model.BeerDto;
-import com.dss.beer.web.model.BeerPagedList;
-import com.dss.beer.web.model.BeerStyleEnum;
+import com.dss.brewery.model.BeerDto;
+import com.dss.brewery.model.BeerPagedList;
+import com.dss.brewery.model.BeerStyleEnum;
 import com.dss.beer.service.BeerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;

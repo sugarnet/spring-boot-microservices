@@ -1,6 +1,6 @@
-package com.dss.common.events;
+package com.dss.brewery.model.events;
 
-import com.dss.beer.web.model.BeerDto;
+import com.dss.brewery.model.BeerDto;
 import lombok.*;
 
 import java.io.Serializable;

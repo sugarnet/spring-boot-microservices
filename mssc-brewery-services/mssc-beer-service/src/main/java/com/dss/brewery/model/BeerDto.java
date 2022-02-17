@@ -1,4 +1,4 @@
-package com.dss.beer.web.model;
+package com.dss.brewery.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;

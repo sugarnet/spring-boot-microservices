@@ -1,8 +1,8 @@
 package com.dss.beer.web.controller;
 
 import com.dss.beer.bootstrap.BeerLoader;
-import com.dss.beer.web.model.BeerDto;
-import com.dss.beer.web.model.BeerStyleEnum;
+import com.dss.brewery.model.BeerDto;
+import com.dss.brewery.model.BeerStyleEnum;
 import com.dss.beer.service.BeerService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;

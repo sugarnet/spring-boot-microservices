@@ -2,9 +2,9 @@ package com.dss.beer.service;
 
 import com.dss.beer.domain.Beer;
 import com.dss.beer.web.mapper.BeerMapper;
-import com.dss.beer.web.model.BeerDto;
-import com.dss.beer.web.model.BeerPagedList;
-import com.dss.beer.web.model.BeerStyleEnum;
+import com.dss.brewery.model.BeerDto;
+import com.dss.brewery.model.BeerPagedList;
+import com.dss.brewery.model.BeerStyleEnum;
 import com.dss.beer.repository.BeerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.Cacheable;
