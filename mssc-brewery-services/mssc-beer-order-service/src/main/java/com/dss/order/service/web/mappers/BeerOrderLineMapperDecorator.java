@@ -3,7 +3,7 @@ package com.dss.order.service.web.mappers;
 import com.dss.order.service.domain.BeerOrderLine;
 import com.dss.order.service.services.beer.BeerService;
 import com.dss.order.service.services.beer.model.BeerDto;
-import com.dss.order.service.web.model.BeerOrderLineDto;
+import com.dss.brewery.model.BeerOrderLineDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
