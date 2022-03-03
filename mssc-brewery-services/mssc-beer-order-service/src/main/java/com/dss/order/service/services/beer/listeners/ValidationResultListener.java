@@ -18,7 +18,7 @@ public class ValidationResultListener {
     private final BeerOrderManager beerOrderManager;
 
     @Transactional
-    @JmsListener(destination = JmsConfig.VALIDATE_ORDER_REQUEST_QUEUE)
+    @JmsListener(destination = JmsConfig.VALIDATE_ORDER_RESULT_QUEUE)
     public void listen(ValidateOrderResult validateOrderResult) {
 
         log.debug("Beer Order Validated Id {}", validateOrderResult.getOrderId());
