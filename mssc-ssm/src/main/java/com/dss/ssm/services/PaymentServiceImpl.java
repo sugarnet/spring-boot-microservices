@@ -55,12 +55,12 @@ public class PaymentServiceImpl implements PaymentService {
     }
 
     private void sendEvent(Long paymentId, StateMachine<PaymentState, PaymentEvent> stateMachine, PaymentEvent paymentEvent) {
-        Message message = MessageBuilder.withPayload(paymentEvent).setHeader(PAYMENT_ID_HEADER, paymentId).build();
+        Message<PaymentEvent> message = MessageBuilder.withPayload(paymentEvent).setHeader(PAYMENT_ID_HEADER, paymentId).build();
         stateMachine.sendEvent(message);
     }
 
     private StateMachine<PaymentState, PaymentEvent> build(Long paymentId) {
-        Payment payment = paymentRepository.getById(paymentId);
+        Payment payment = paymentRepository.getOne(paymentId);
         StateMachine<PaymentState, PaymentEvent> stateMachine = stateMachineFactory.getStateMachine(Long.toString(payment.getId()));
         stateMachine.stop();
 

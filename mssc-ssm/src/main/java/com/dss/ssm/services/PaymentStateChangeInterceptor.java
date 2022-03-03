@@ -24,7 +24,7 @@ public class PaymentStateChangeInterceptor extends StateMachineInterceptorAdapte
         Optional.ofNullable(message).ifPresent(msg -> {
             Optional.ofNullable(Long.class.cast(message.getHeaders().getOrDefault(PaymentServiceImpl.PAYMENT_ID_HEADER, -1l)))
                     .ifPresent(paymentId -> {
-                        Payment payment = paymentRepository.getById(paymentId);
+                        Payment payment = paymentRepository.getOne(paymentId);
                         payment.setPaymentState(state.getId());
                         paymentRepository.save(payment);
                     });

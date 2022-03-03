@@ -42,7 +42,7 @@ class PaymentServiceImplTest {
 
         StateMachine<PaymentState, PaymentEvent> stateMachine = paymentService.preAuth(savedPayment.getId());
 
-        Payment preAuthPayment = paymentRepository.getById(savedPayment.getId());
+        Payment preAuthPayment = paymentRepository.getOne(savedPayment.getId());
 
         System.out.println(stateMachine.getState().getId());
 
@@ -62,7 +62,7 @@ class PaymentServiceImplTest {
 
             StateMachine<PaymentState, PaymentEvent> authStateMachine = paymentService.preAuth(savedPayment.getId());
 
-            System.out.println("Result of Atuth: " + authStateMachine.getState().getId());
+            System.out.println("Result of Auth: " + authStateMachine.getState().getId());
         } else {
             System.out.println("Payment failed Pre-Auth...");
         }
