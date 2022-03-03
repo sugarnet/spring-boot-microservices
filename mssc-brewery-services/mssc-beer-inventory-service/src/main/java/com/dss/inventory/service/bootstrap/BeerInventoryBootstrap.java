@@ -1,7 +1,7 @@
-package com.dss.inventory.bootstrap;
+package com.dss.inventory.service.bootstrap;
 
-import com.dss.inventory.domain.BeerInventory;
-import com.dss.inventory.repositories.BeerInventoryRepository;
+import com.dss.inventory.service.domain.BeerInventory;
+import com.dss.inventory.service.repositories.BeerInventoryRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;

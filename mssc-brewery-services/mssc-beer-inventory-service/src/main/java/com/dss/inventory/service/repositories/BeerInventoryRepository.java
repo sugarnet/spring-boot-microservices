@@ -14,9 +14,9 @@
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package com.dss.inventory.repositories;
+package com.dss.inventory.service.repositories;
 
-import com.dss.inventory.domain.BeerInventory;
+import com.dss.inventory.service.domain.BeerInventory;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

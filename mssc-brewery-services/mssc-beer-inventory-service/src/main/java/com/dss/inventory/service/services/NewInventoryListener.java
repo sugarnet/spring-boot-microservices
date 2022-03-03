@@ -1,9 +1,9 @@
-package com.dss.inventory.service.brewing;
+package com.dss.inventory.service.services;
 
-import com.dss.inventory.config.JmsConfig;
-import com.dss.inventory.domain.BeerInventory;
+import com.dss.inventory.service.config.JmsConfig;
+import com.dss.inventory.service.domain.BeerInventory;
 import com.dss.brewery.model.events.NewInventoryEvent;
-import com.dss.inventory.repositories.BeerInventoryRepository;
+import com.dss.inventory.service.repositories.BeerInventoryRepository;
 import com.dss.brewery.model.events.BeerDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
