@@ -1,4 +1,4 @@
-package com.dss.inventory.service.services;
+package com.dss.inventory.service.services.listeners;
 
 import com.dss.inventory.service.config.JmsConfig;
 import com.dss.inventory.service.domain.BeerInventory;

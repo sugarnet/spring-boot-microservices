@@ -1,5 +1,6 @@
 package com.dss.order.service.sm.actions;
 
+import com.dss.brewery.model.events.AllocateOrderRequest;
 import com.dss.order.service.config.JmsConfig;
 import com.dss.order.service.domain.BeerOrder;
 import com.dss.order.service.domain.BeerOrderEventEnum;
@@ -34,7 +35,7 @@ public class AllocateOrderAction implements Action<BeerOrderStatusEnum, BeerOrde
         if (Objects.nonNull(beerOrderId)) {
             BeerOrder beerOrder = beerOrderRepository.findOneById(UUID.fromString(beerOrderId));
 
-            jmsTemplate.convertAndSend(JmsConfig.ALLOCATE_ORDER_QUEUE, beerOrderMapper.beerOrderToDto(beerOrder));
+            jmsTemplate.convertAndSend(JmsConfig.ALLOCATE_ORDER_QUEUE, AllocateOrderRequest.builder().beerOrder(beerOrderMapper.beerOrderToDto(beerOrder)).build());
         }
 
         log.debug("Sent allocation request for order id {}", beerOrderId);
