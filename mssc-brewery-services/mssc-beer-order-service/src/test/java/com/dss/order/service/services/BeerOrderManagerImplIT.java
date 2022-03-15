@@ -75,7 +75,7 @@ public class BeerOrderManagerImplIT {
     @Test
     void testNewToAllocated() throws JsonProcessingException, InterruptedException {
 
-        BeerDto beerDto = BeerDto.builder().id(uuid).upc("12345").build();
+        BeerDto beerDto = BeerDto.builder().id(uuid).upc("1234").build();
 
         wireMockServer.stubFor(get(BeerServiceRestTemplateImpl.BEER_SERVICE_PATH + "1234")
                 .willReturn(okJson(objectMapper.writeValueAsString(beerDto))));
@@ -103,6 +103,36 @@ public class BeerOrderManagerImplIT {
         savedBeerOrder2.getBeerOrderLines().forEach(line -> {
             assertEquals(line.getOrderQuantity(), line.getQuantityAllocated());
         });
+    }
+
+    @Test
+    void testNewToPickedUp() throws JsonProcessingException {
+        BeerDto beerDto = BeerDto.builder().id(uuid).upc("1234").build();
+
+        wireMockServer.stubFor(get(BeerServiceRestTemplateImpl.BEER_SERVICE_PATH + "1234")
+                .willReturn(okJson(objectMapper.writeValueAsString(beerDto))));
+
+        BeerOrder beerOrder = createBeerOrder();
+
+        BeerOrder savedBeerOrder = beerOrderManager.saveNewOrder(beerOrder);
+
+        await().untilAsserted(() -> {
+            BeerOrder foundOrder = beerOrderRepository.findById(beerOrder.getId()).get();
+
+            assertEquals(BeerOrderStatusEnum.ALLOCATED, foundOrder.getOrderStatus());
+        });
+
+        beerOrderManager.beerOrderPickedUp(savedBeerOrder.getId());
+
+        await().untilAsserted(() -> {
+            BeerOrder foundOrder = beerOrderRepository.findById(beerOrder.getId()).get();
+
+            assertEquals(BeerOrderStatusEnum.PICKED_UP, foundOrder.getOrderStatus());
+        });
+
+        BeerOrder pickedUpOrder = beerOrderRepository.findById(beerOrder.getId()).get();
+
+        assertEquals(BeerOrderStatusEnum.PICKED_UP, pickedUpOrder.getOrderStatus());
     }
 
     public BeerOrder createBeerOrder() {
