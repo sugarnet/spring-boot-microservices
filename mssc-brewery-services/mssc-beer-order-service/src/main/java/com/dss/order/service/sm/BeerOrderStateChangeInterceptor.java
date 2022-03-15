@@ -32,9 +32,13 @@ public class BeerOrderStateChangeInterceptor extends StateMachineInterceptorAdap
                 .ifPresent(beerOrderId -> {
                     log.debug("Saving state for order id: " + beerOrderId + " status " + state.getId());
 
-                    BeerOrder beerOrder = beerOrderRepository.getOne(UUID.fromString(beerOrderId));
-                    beerOrder.setOrderStatus(state.getId());
-                    beerOrderRepository.saveAndFlush(beerOrder);
+                    Optional<BeerOrder> beerOrderOptional = beerOrderRepository.findById(UUID.fromString(beerOrderId));
+
+                    beerOrderOptional.ifPresentOrElse(beerOrder -> {
+                        beerOrder.setOrderStatus(state.getId());
+                        beerOrderRepository.saveAndFlush(beerOrder);
+
+                    }, () -> log.error("Beer order id {} not found", beerOrderId));
                 });
     }
 }
