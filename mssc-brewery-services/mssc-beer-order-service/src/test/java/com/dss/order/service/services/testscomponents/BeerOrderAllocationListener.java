@@ -24,18 +24,24 @@ public class BeerOrderAllocationListener {
 
         boolean pendingInventory = false;
         boolean allocationError = false;
+        boolean sendResponse = true;
 
-        AllocateOrderRequest allocateOrderRequest = message.getPayload();
+        AllocateOrderRequest request = message.getPayload();
 
-        if (Objects.nonNull(allocateOrderRequest.getBeerOrder().getCustomerRef()) && allocateOrderRequest.getBeerOrder().getCustomerRef().equals("pending-inventory")) {
-            pendingInventory = true;
-        }
-        if (Objects.nonNull(allocateOrderRequest.getBeerOrder().getCustomerRef()) && allocateOrderRequest.getBeerOrder().getCustomerRef().equals("allocation-error")) {
-            allocationError = true;
+        // set allocation error
+        if (Objects.nonNull(request.getBeerOrder().getCustomerRef())) {
+
+            if (request.getBeerOrder().getCustomerRef().equals("allocation-error")) {
+                allocationError = true;
+            } else if (request.getBeerOrder().getCustomerRef().equals("pending-inventory")) {
+                pendingInventory = true;
+            } else if (request.getBeerOrder().getCustomerRef().equals("dont-allocate")) {
+                sendResponse = false;
+            }
         }
 
         boolean finalPendingInventory = pendingInventory;
-        allocateOrderRequest.getBeerOrder().getBeerOrderLines().forEach(beerOrderLineDto -> {
+        request.getBeerOrder().getBeerOrderLines().forEach(beerOrderLineDto -> {
             if (finalPendingInventory) {
 
                 beerOrderLineDto.setQuantityAllocated(beerOrderLineDto.getOrderQuantity() - 1);
@@ -45,8 +51,9 @@ public class BeerOrderAllocationListener {
             }
         });
 
-        jmsTemplate.convertAndSend(JmsConfig.ALLOCATE_ORDER_RESULT_QUEUE,
-                AllocateOrderResult.builder().beerOrderDto(allocateOrderRequest.getBeerOrder()).pendingInventory(pendingInventory).allocationError(allocationError).build());
-
+        if (sendResponse) {
+            jmsTemplate.convertAndSend(JmsConfig.ALLOCATE_ORDER_RESULT_QUEUE,
+                    AllocateOrderResult.builder().beerOrderDto(request.getBeerOrder()).pendingInventory(pendingInventory).allocationError(allocationError).build());
+        }
     }
 }

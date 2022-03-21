@@ -16,6 +16,7 @@ import org.springframework.statemachine.support.DefaultStateMachineContext;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityManager;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -29,6 +30,7 @@ public class BeerOrderManagerImpl implements BeerOrderManager {
     private final StateMachineFactory<BeerOrderStatusEnum, BeerOrderEventEnum> stateMachineFactory;
     private final BeerOrderRepository beerOrderRepository;
     private final BeerOrderStateChangeInterceptor beerOrderStateChangeInterceptor;
+    private final EntityManager entityManager;
 
     @Transactional
     @Override
@@ -44,6 +46,9 @@ public class BeerOrderManagerImpl implements BeerOrderManager {
     @Transactional
     @Override
     public void processValidationResult(UUID orderId, boolean isValid) {
+
+        entityManager.flush();
+
         Optional<BeerOrder> beerOrderOptional = beerOrderRepository.findById(orderId);
 
         beerOrderOptional.ifPresentOrElse(beerOrder -> {
@@ -97,6 +102,15 @@ public class BeerOrderManagerImpl implements BeerOrderManager {
         beerOrderOptional.ifPresentOrElse(beerOrder -> {
             sendBeerOrderEvent(beerOrder, BeerOrderEventEnum.BEER_ORDER_PICKED_UP);
         }, () -> log.error("Order Not Found Id {}", id));
+    }
+
+    @Override
+    public void beerOrderCancel(UUID uuid) {
+        Optional<BeerOrder> beerOrderOptional  = beerOrderRepository.findById(uuid);
+
+        beerOrderOptional.ifPresentOrElse(beerOrder -> {
+            sendBeerOrderEvent(beerOrder, BeerOrderEventEnum.CANCEL_ORDER);
+        }, () -> log.error("Order Not Found Id {}", uuid));
     }
 
     private void updateAllocatedQty(BeerOrderDto beerOrderDto) {
