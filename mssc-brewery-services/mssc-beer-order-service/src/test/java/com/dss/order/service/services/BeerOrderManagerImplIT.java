@@ -1,5 +1,7 @@
 package com.dss.order.service.services;
 
+import com.dss.brewery.model.events.AllocationFailureEvent;
+import com.dss.order.service.config.JmsConfig;
 import com.dss.order.service.domain.BeerOrder;
 import com.dss.order.service.domain.BeerOrderLine;
 import com.dss.order.service.domain.BeerOrderStatusEnum;
@@ -19,6 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
+import org.springframework.jms.core.JmsTemplate;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -51,6 +54,9 @@ public class BeerOrderManagerImplIT {
 
     @Autowired
     ObjectMapper objectMapper;
+
+    @Autowired
+    JmsTemplate jmsTemplate;
 
     Customer testCustomer;
 
@@ -141,6 +147,11 @@ public class BeerOrderManagerImplIT {
 
             assertEquals(BeerOrderStatusEnum.ALLOCATION_EXCEPTION, foundOrder.getOrderStatus());
         });
+
+        AllocationFailureEvent allocationFailureEvent = (AllocationFailureEvent) jmsTemplate.receiveAndConvert(JmsConfig.ALLOCATE_ORDER_FAILURE_QUEUE);
+        assertNotNull(allocationFailureEvent);
+        assertEquals(savedBeerOrder.getId(), allocationFailureEvent.getOrderId());
+
     }
 
     @Test
