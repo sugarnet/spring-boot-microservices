@@ -39,6 +39,7 @@ public class AllocationRequestListener {
                 builder.pendingInventory(false);
             }
 
+            builder.allocationError(false);
         } catch (Exception e) {
             builder.allocationError(true);
         }
