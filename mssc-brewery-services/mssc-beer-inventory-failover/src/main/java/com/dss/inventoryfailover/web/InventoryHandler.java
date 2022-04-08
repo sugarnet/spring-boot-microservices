@@ -17,12 +17,12 @@ public class InventoryHandler {
 
     public Mono<ServerResponse> listInventory(ServerRequest serverRequest) {
         return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON)
-                .body(Arrays.asList(BeerInventoryDto.builder()
+                .body(Mono.just(Arrays.asList(BeerInventoryDto.builder()
                         .id(UUID.randomUUID())
                         .createdDate(OffsetDateTime.now())
                         .lastModifiedDate(OffsetDateTime.now())
                         .beerId(UUID.fromString("0000000-0000-0000-0000-000000000000"))
                         .quantityOnHand(999)
-                        .build()), List.class);
+                        .build())), List.class);
     }
 }
