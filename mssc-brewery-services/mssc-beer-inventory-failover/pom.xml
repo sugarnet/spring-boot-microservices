@@ -13,6 +13,15 @@
     <name>mssc-beer-inventory-failover</name>
     <description>mssc-beer-inventory-failover</description>
 
+    <properties>
+        <java.version>11</java.version>
+        <spring-cloud.version>Hoxton.SR4</spring-cloud.version>
+        <!--set this to your docker acct name-->
+        <docker.image.prefix>diegoscifo</docker.image.prefix>
+        <!--Set to name of project-->
+        <docker.image.name>${project.artifactId}</docker.image.name>
+    </properties>
+
     <dependencies>
 
         <dependency>
